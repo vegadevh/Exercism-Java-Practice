@@ -51,21 +51,6 @@ public class AnnalynsInfiltration {
         Boolean prisonerIsAwake = true;
         Boolean petDogIsPresent = false;
         
-        System.out.println("AND - TRUE/TRUE: " + (knightIsAwake && prisonerIsAwake));
-        System.out.println("AND - TRUE/FALSE: " + (knightIsAwake && archerIsAwake));
-        System.out.println("AND - FALSE/TRUE: "+ (archerIsAwake && prisonerIsAwake));
-        System.out.println("AND - FALSE/FALSE: "+ (archerIsAwake && petDogIsPresent));
-        System.out.println("---------");
-        System.out.println("OR - TRUE/TRUE: " + (knightIsAwake || prisonerIsAwake));
-        System.out.println("OR - TRUE/FALSE: " + (knightIsAwake || archerIsAwake));
-        System.out.println("OR - FALSE/TRUE: "+ (archerIsAwake || prisonerIsAwake));
-        System.out.println("OR - FALSE/FALSE: "+ (archerIsAwake || petDogIsPresent));
-        System.out.println("---------");
-        System.out.println("XOR - TRUE/TRUE: " + (knightIsAwake ^ prisonerIsAwake));
-        System.out.println("XOR - TRUE/FALSE: " + (knightIsAwake ^ archerIsAwake));
-        System.out.println("XOR - FALSE/TRUE: "+ (archerIsAwake ^ prisonerIsAwake));
-        System.out.println("XOR - FALSE/FALSE: "+ (archerIsAwake ^ petDogIsPresent));
-        
 //        System.out.println("CanFastAttack " + canFastAttack(true));
 //        System.out.println("CanSpy " + canSpy(true, true, true));
 //        System.out.println("CanSignalPrisoner " + canSignalPrisoner(true, true));
