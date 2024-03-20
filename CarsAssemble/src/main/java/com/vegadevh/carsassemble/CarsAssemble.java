@@ -33,20 +33,22 @@ public class CarsAssemble {
      * @return 
     */
     
+    static final int CARS_BUILD_PER_HOUR = 221;
+    
     public static double productionRatePerHour(int speed) {
         double success;
         if(speed >0 && speed <= 4){
             success = 1;
-            return speed * 221 *success;
+            return speed * CARS_BUILD_PER_HOUR *success;
         }else if(speed > 4 && speed <=8){
             success = 0.9;
-            return speed * 221 * success;
+            return speed * CARS_BUILD_PER_HOUR * success;
         }else if(speed == 9){
             success = 0.8;
-            return speed * 221 * success;
+            return speed * CARS_BUILD_PER_HOUR * success;
         }else if(speed ==10){
             success = 0.77;
-            return speed * 221 * success;
+            return speed * CARS_BUILD_PER_HOUR * success;
         }else{
             System.out.println("That speed it's not aplicable for our systems.");
             return 0;
