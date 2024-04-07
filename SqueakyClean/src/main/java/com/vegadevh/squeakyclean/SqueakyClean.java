@@ -59,7 +59,7 @@ public class SqueakyClean {
         response = response.replaceAll("4", "a");
         response = response.replaceAll("3", "e");
         response = response.replaceAll("0", "o");
-        response = response.replaceAll("1", "i");
+        response = response.replaceAll("1", "l");
         response = response.replaceAll("7", "t");
         return response;
     }
