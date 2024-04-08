@@ -10,6 +10,43 @@ package com.vegadevh.needforspeed;
  */
 public class NeedForSpeed {
     
+    private int speed;
+    private int batteryDrain;
+    private int distance;
+    private int battery;
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getBatteryDrain() {
+        return batteryDrain;
+    }
+
+    public void setBatteryDrain(int batteryDrain) {
+        this.batteryDrain = batteryDrain;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance += distance;
+    }
+
+    public int getBattery() {
+        return battery;
+    }
+
+    public void setBattery(int battery) {
+        this.battery -= battery;
+    }
+      
     /*
     Constructors
     
@@ -20,7 +57,7 @@ public class NeedForSpeed {
     ********
     
     class Library {
-    private int books;
+        private int books;
 
         public Library() {
             // Initialize the books field
@@ -84,15 +121,12 @@ public class NeedForSpeed {
     ***********
     */
     
-    /*
-    Allow creating a race track by defining a constructor for the RaceTrack class
-    that takes the track's distance in meters as its sole parameter (which is of type int)
-    
-    **********
-    int distance = 800;
-    var raceTrack = new RaceTrack(distance);
-    **********
-    */
+    NeedForSpeed(int speed, int batteryDrain) {
+        this.speed = speed;
+        this.batteryDrain = batteryDrain;
+        this.distance = 0;
+        this.battery = 100;
+    }
     
     /*
     Implement the NeedForSpeed.drive() method that updates the number of meters
@@ -110,6 +144,17 @@ public class NeedForSpeed {
     ***********
     */
     
+    public void drive() {
+        if(this.getBattery()>0){
+            this.setDistance(this.speed);
+            this.setBattery(this.batteryDrain);
+        }
+    }
+    
+    public int distanceDriven() {
+        return this.getDistance();
+    }
+    
     /*
     Update the NeedForSpeed.drive() method to drain the battery based on the car's battery drain.
     Also implement the NeedForSpeed.batteryDrained() method that indicates if the battery is drained
@@ -125,6 +170,10 @@ public class NeedForSpeed {
     **********
     */
     
+    public boolean batteryDrained() {
+        return this.getBattery()<=0;
+    }
+    
     /*
     The best-selling remote control car is the Nitro, which has a stunning top
     speed of 50 meters with a battery drain of 4%. Implement the (static) NeedForSpeed.nitro()
@@ -138,53 +187,30 @@ public class NeedForSpeed {
     **********
     */
     
-    /*
-    To finish a race, a car has to be able to drive the race's distance.
-    This means not draining its battery before having crossed the finish line.
-    Implement the RaceTrack.tryFinishTrack() method that takes a NeedForSpeed
-    instance as its parameter and returns true if the car can finish the race;
-    otherwise, return false
-    
-    ************
-    int speed = 5;
-    int batteryDrain = 2;
-    var car = new NeedForSpeed(speed, batteryDrain);
-
-    int distance = 100;
-    var race = new RaceTrack(distance);
-
-    car.distanceDriven()
-    // => 0
-
-    race.tryFinishTrack(car);
-    // => true
-
-    car.distanceDriven()
-    // => 100
-    ************
-    */
-    
-    NeedForSpeed(int speed, int batteryDrain) {
-        throw new UnsupportedOperationException("Please implement the NeedForSpeed constructor");
-    }
-
-    public boolean batteryDrained() {
-        throw new UnsupportedOperationException("Please implement the NeedForSpeed.batteryDrained() method");
-    }
-
-    public int distanceDriven() {
-        throw new UnsupportedOperationException("Please implement the NeedForSpeed.distanceDriven() method");
-    }
-
-    public void drive() {
-        throw new UnsupportedOperationException("Please implement the NeedForSpeed.drive() method");
-    }
-
     public static NeedForSpeed nitro() {
-        throw new UnsupportedOperationException("Please implement the (static) NeedForSpeed.nitro() method");
+        return new NeedForSpeed(50,4);
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        NeedForSpeed car = new NeedForSpeed(9, 50);
+        RaceTrack raceTrack1 = new RaceTrack(16);
+        
+        // Drain the battery
+        car.drive();
+        car.drive();
+        // One extra drive attempt (should not succeed)
+        car.drive();
+        
+        System.out.println("Distance driven: "+ car.distanceDriven());
+        System.out.println("Battery: "+ car.getBattery());
+        System.out.println("Battery drained: "+ car.getBatteryDrain());
+        
+        NeedForSpeed car1 = new NeedForSpeed(3, 20);
+        System.out.println("Can this car finish the race? "+ raceTrack1.tryFinishTrack(car1));
+        
+        NeedForSpeed car2 = new NeedForSpeed(1, 20);
+        RaceTrack raceTrack2 = new RaceTrack(678);
+        
+        System.out.println("Can this car finish the race? "+ raceTrack2.tryFinishTrack(car2));
     }
 }
