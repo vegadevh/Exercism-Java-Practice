@@ -31,7 +31,7 @@ public class RaceTrack {
     */
     
     RaceTrack(int distance) {
-        this.setDistance(distance);
+        this.distance = distance;
     }
     
     /*
