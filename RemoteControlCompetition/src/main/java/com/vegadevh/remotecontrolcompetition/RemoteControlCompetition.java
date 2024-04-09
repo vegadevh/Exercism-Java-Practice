@@ -4,6 +4,9 @@
 
 package com.vegadevh.remotecontrolcompetition;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author vegad
@@ -136,16 +139,38 @@ public class RemoteControlCompetition {
     // => rankings.get(1) == prc1
     ************
     */
-    
-    public void drive() {
-        throw new UnsupportedOperationException("Please implement the ExperimentalRemoteControlCar.drive() method");
-    }
-
-    public int getDistanceTravelled() {
-        throw new UnsupportedOperationException("Please implement the ExperimentalRemoteControlCar.getDistanceTravelled() method");
-    }
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ProductionRemoteControlCar prodCar = new ProductionRemoteControlCar();
+        ExperimentalRemoteControlCar expCar = new ExperimentalRemoteControlCar();
+        
+        prodCar.drive();
+        expCar.drive();
+        
+        System.out.println("Production Remote Control: "+prodCar.getDistanceTravelled());
+        System.out.println("Experimental Remote Control: "+expCar.getDistanceTravelled());
+        
+        TestTrack.race(prodCar);
+        TestTrack.race(expCar);
+        
+        System.out.println("Production Remote Control: "+prodCar.getDistanceTravelled());
+        System.out.println("Experimental Remote Control: "+expCar.getDistanceTravelled());
+        
+        ProductionRemoteControlCar prc1 = new ProductionRemoteControlCar();
+        ProductionRemoteControlCar prc2 = new ProductionRemoteControlCar();
+        prc1.setNumberOfVictories(2);
+        prc2.setNumberOfVictories(3);
+        
+        List<ProductionRemoteControlCar> unsortedCars = new ArrayList<>();
+        unsortedCars.add(prc1);
+        unsortedCars.add(prc2);
+        
+//        List<ProductionRemoteControlCar> rankings = TestTrack.getRankedCars(unsortedCars);
+        
+//        for (int i = 0; i < rankings.size(); i++) {
+//            System.out.println(rankings.get(i).getVictories());
+//        }
+       
+        
     }
 }
