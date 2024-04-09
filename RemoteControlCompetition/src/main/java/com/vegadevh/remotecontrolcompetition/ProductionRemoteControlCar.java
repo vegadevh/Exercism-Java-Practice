@@ -62,9 +62,8 @@ public class ProductionRemoteControlCar implements RemoteControlCar, Comparable<
     }
 
     @Override
-    public int compareTo(ProductionRemoteControlCar o) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        return 0;
+    public int compareTo(ProductionRemoteControlCar productionRemoteControlCar) {
+        return productionRemoteControlCar.victories - this.victories;
     }
     
 }

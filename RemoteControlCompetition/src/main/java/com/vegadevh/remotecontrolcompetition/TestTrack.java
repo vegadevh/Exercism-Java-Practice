@@ -18,7 +18,7 @@ public class TestTrack {
     }
 
     public static List<ProductionRemoteControlCar> getRankedCars(List<ProductionRemoteControlCar> cars) {
-        Collections.sort(cars, Collections.reverseOrder());
+        Collections.sort(cars);
         return cars;
     }
     
