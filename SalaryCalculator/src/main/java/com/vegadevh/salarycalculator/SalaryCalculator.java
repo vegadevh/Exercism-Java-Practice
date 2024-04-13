@@ -58,6 +58,12 @@ public class SalaryCalculator {
     ***********
     */
     
+    public double salaryMultiplier(int daysSkipped) {
+        double multiplier = 1.0;
+        double penalty = 0.15;
+        return daysSkipped >= 5 ? multiplier - multiplier*penalty : multiplier ;
+    }
+    
     /*
     2. Calculate the bonus for products sold
     Implement the bonusMultiplier and bonusForProductsSold methods.
@@ -82,6 +88,14 @@ public class SalaryCalculator {
     ************
     */
     
+    public int bonusMultiplier(int productsSold) {
+        return productsSold >= 20 ? 13 : 10 ;
+    }
+
+    public double bonusForProductsSold(int productsSold) {
+        return productsSold * bonusMultiplier(productsSold);
+    }
+    
     /*
     3. Calculate the final salary for the employee
     
@@ -101,23 +115,24 @@ public class SalaryCalculator {
     **********
     */
     
-    public double salaryMultiplier(int daysSkipped) {
-        throw new UnsupportedOperationException("Please implement the SalaryCalculator.salaryMultiplier() method");
-    }
-
-    public int bonusMultiplier(int productsSold) {
-        throw new UnsupportedOperationException("Please implement the SalaryCalculator.bonusMultiplier() method");
-    }
-
-    public double bonusForProductsSold(int productsSold) {
-        throw new UnsupportedOperationException("Please implement the SalaryCalculator.bonusForProductsSold() method");
-    }
-
     public double finalSalary(int daysSkipped, int productsSold) {
-        throw new UnsupportedOperationException("Please implement the SalaryCalculator.finalSalary() method");
+        double baseSalary = 1000.00;
+        return (baseSalary * salaryMultiplier(daysSkipped)) + bonusForProductsSold(productsSold) > 2000 
+                ? 2000 
+                : (baseSalary * salaryMultiplier(daysSkipped)) + bonusForProductsSold(productsSold); 
     } 
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        SalaryCalculator salaryCalculator = new SalaryCalculator();
+        int productsSold = 3;
+        int daysSkipped = 2;
+        
+        System.out.println(salaryCalculator.salaryMultiplier(5));
+        System.out.println(salaryCalculator.bonusMultiplier(productsSold));
+        System.out.println(salaryCalculator.bonusForProductsSold(productsSold));
+        
+        System.out.println(salaryCalculator.finalSalary(daysSkipped, productsSold));
+        productsSold = 90;
+        System.out.println(salaryCalculator.finalSalary(daysSkipped, productsSold));
     }
 }
