@@ -9,52 +9,7 @@ package com.vegadevh.footballmatchreports;
  * @author vegad
  */
 public class FootballMatchReports {
-    
-    /*
-    Introduction
-    
-    Switch Statements
-    Like an if/else statement, 
-    a switch statement allows you to change the flow of the program by conditionally executing code.
-    The difference is that a switch statement can only compare the value
-    of a primitive or string expression against pre-defined constant values.
-
-    Some keywords are useful when using a switch statement.
-
-        - switch: this keyword allows you to declare the structure of the switch.
-            It is followed by the expression or the variable that will change the result.
-        - case: you will use this keyword to declare the different possibilities for the result.
-        - break: the break keyword is very useful in order to stop the execution of the 
-            switch at the end of the wanted flow. 
-            If you forget it, the program will continue and may lead to unexpected results.
-        - default: as its name says, use it as a default result when no other case matches your expression's result.
-    
-    At their simplest they test a primitive or string expression and make a decision based on its value. For example:
-    
-    ***********
-    String direction = getDirection();
-    switch (direction) {
-        case "left":
-            goLeft();
-            break;
-        case "right":
-            goRight();
-            break;
-        default:
-            // otherwise
-            markTime();
-            break;
-    }
-    ***********
-    */
-    
-    /*
-    Instructions
-    
-    You are developing a system to help the staff of a football/soccer club's web site report on matches.
-    Data is received from a variety of sources and piped into a single stream after being cleaned up.
-    */
-    
+   
     /*
     1. Output descriptions of the players based on their shirt number
     
@@ -89,11 +44,63 @@ public class FootballMatchReports {
         // => Throw IllegalArgumentException
     */
     
-    public static String onField(int shirtNum) {
-        throw new UnsupportedOperationException("Please implement the (static) FootballMatchReports.onField() method");
-    }
+    public static String onField(int shirtNum) throws IllegalArgumentException{
+        switch (shirtNum) {
+            case 1 -> { 
+                return "goalie";
+            }
+            case 2 -> {
+                return "left back";
+            }
+            case 3, 4 -> {
+                return "center back";
+            }
+            case 5 -> {
+                return "right back";
+            }
+            case 6, 7, 8 -> {
+                return "midfielder";
+            }
+            case 9 -> {
+                return "left wing";
+            }
+            case 10 -> {
+                return "striker";
+            }
+            case 11 -> {
+                return "right wing";
+            }
+            default -> throw new IllegalArgumentException();
+        }
+   }
+
+//    public static String onField(int shirtNum) throws IllegalArgumentException{
+//        String indication;
+//        return indication = switch (shirtNum) {
+//            case 1 -> "goalie";
+//            case 2 -> "left back";
+//            case 3, 4 -> "center back";
+//            case 5 -> "right back";
+//            case 6, 7, 8 -> "midfielder";
+//            case 9 -> "left wing";
+//            case 10 -> "striker";
+//            case 11 -> "right wing";
+//            default -> throw new IllegalArgumentException();
+//        };
+//    }
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println(onField(1));
+        System.out.println(onField(2));
+        System.out.println(onField(3));
+        System.out.println(onField(4));
+        System.out.println(onField(5));
+        System.out.println(onField(6));
+        System.out.println(onField(7));
+        System.out.println(onField(8));
+        System.out.println(onField(9));
+        System.out.println(onField(10));
+        System.out.println(onField(11));
+        System.out.println(onField(12));
     }
 }
