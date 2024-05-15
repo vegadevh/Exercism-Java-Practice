@@ -1,0 +1,28 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.vegadevh.bookingupforbeauty;
+
+import java.time.LocalDateTime;
+
+/**
+ *
+ * @author vegadevh
+ */
+public class BookingUpForBeauty {
+    
+    /*
+    Instructions
+    In this exercise you'll be working on an appointment scheduler 
+    for a beauty salon in New York that opened on September 15th in 2012.
+    */
+
+    public static void main(String[] args) {
+        AppointmentScheduler appointmentScheduler = new AppointmentScheduler();
+        AppointmentScheduler scheduler = new AppointmentScheduler();
+        
+        System.out.println(appointmentScheduler.schedule("7/25/2019 13:45:00").toString());
+        System.out.println("Has passed? "+scheduler.hasPassed(LocalDateTime.of(1999, 12, 31, 9, 0, 0)));
+    }
+}
