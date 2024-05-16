@@ -87,8 +87,7 @@ public class AppointmentScheduler {
     */
 
     public LocalDate getAnniversaryDate() {
-        LocalDate localDate = LocalDate.now();
-        return localDate.of(localDate.getYear(), 9, 15);
+        return LocalDate.of(LocalDate.now().getYear(), 9, 15);
     }
     
 }
