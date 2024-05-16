@@ -19,10 +19,12 @@ public class BookingUpForBeauty {
     */
 
     public static void main(String[] args) {
-        AppointmentScheduler appointmentScheduler = new AppointmentScheduler();
         AppointmentScheduler scheduler = new AppointmentScheduler();
         
-        System.out.println(appointmentScheduler.schedule("7/25/2019 13:45:00").toString());
+        System.out.println(scheduler.schedule("7/25/2019 13:45:00"));
         System.out.println("Has passed? "+scheduler.hasPassed(LocalDateTime.of(1999, 12, 31, 9, 0, 0)));
+        System.out.println("Is Afternoon? "+scheduler.isAfternoonAppointment(LocalDateTime.of(2019, 03, 29, 15, 0, 0)));
+        System.out.println("Description: "+scheduler.getDescription(LocalDateTime.of(2019, 03, 29, 15, 0, 0)));
+        System.out.println("Our Anniversary: "+scheduler.getAnniversaryDate());
     }
 }

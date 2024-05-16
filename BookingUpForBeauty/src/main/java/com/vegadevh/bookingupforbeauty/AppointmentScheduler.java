@@ -7,6 +7,7 @@ package com.vegadevh.bookingupforbeauty;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  *
@@ -27,7 +28,6 @@ public class AppointmentScheduler {
         
         //"7/25/2019 13:45:00"
         LocalDateTime localDateTime = LocalDateTime.parse(appointmentDateDescription, formater);
-        DateTimeFormatter printer = DateTimeFormatter.ofPattern("yyyy, M, dd, H, m, s");
         LocalDateTime localDateTime1 = 
                 LocalDateTime.of(
                         localDateTime.getYear(),
@@ -49,17 +49,46 @@ public class AppointmentScheduler {
         LocalDateTime actualDateTime = LocalDateTime.now();
         return appointmentDate.isBefore(actualDateTime);
     }
-
+    
+    /*
+    Implement the AppointmentScheduler.isAfternoonAppointment() method
+    that takes an appointment date and checks if the appointment is
+    in the afternoon (>= 12:00 and < 18:00)
+    
+    input: LocalDateTime.of(2019, 03, 29, 15, 0, 0)
+    output: true
+    
+    */
+    
     public boolean isAfternoonAppointment(LocalDateTime appointmentDate) {
-        throw new UnsupportedOperationException("Please implement the AppointmentScheduler.isAfternoonAppointment() method");
+        return appointmentDate.getHour() >= 12 && appointmentDate.getHour() < 18;
     }
 
+    /*
+    Implement the AppointmentScheduler.getDescription() method
+    that takes an appointment date and returns a description of that date and time
+    
+    input: LocalDateTime.of(2019, 03, 29, 15, 0, 13)
+    output: "You have an appointment on Friday, March 29, 2019, at 3:15 PM."
+    */
     public String getDescription(LocalDateTime appointmentDate) {
-        throw new UnsupportedOperationException("Please implement the AppointmentScheduler.getDescription() method");
+        return String.format("You have an appointment on %s, %s %d, %d, at %s.",
+                appointmentDate.getDayOfWeek().toString().substring(0, 1)+appointmentDate.getDayOfWeek().toString().substring(1).toLowerCase(),
+                appointmentDate.getMonth().toString().substring(0, 1)+appointmentDate.getMonth().toString().substring(1).toLowerCase(),
+                appointmentDate.getDayOfMonth(),
+                appointmentDate.getYear(),
+                appointmentDate.format(DateTimeFormatter.ofPattern("h:mm a"))                
+        );
     }
+    
+    /*
+    Implement the AppointmentScheduler.getAnniversaryDate() method
+    that returns this year's anniversary date, which is September 15th
+    */
 
     public LocalDate getAnniversaryDate() {
-        throw new UnsupportedOperationException("Please implement the AppointmentScheduler.getAnniversaryDate() method");
+        LocalDate localDate = LocalDate.now();
+        return localDate.of(localDate.getYear(), 9, 15);
     }
     
 }
